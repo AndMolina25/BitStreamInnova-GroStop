@@ -1,31 +1,39 @@
-# Bitácora Individual de Trabajo - GroStop
-**Integrante:** Dahir Miguel Martinez Ortiz [cite:1,3]  
-**Rol:** Diseñador de Interfaces y Experiencia (UI/UX)[cite:3,4]  
-**Célula:** BitStream Innova[cite:1]  
+# Bitácora Conjunta de Trabajo - GroStop
 
-### Justificación de Incorporación
-A causa de la baja de la integrante originalmente asignada a este rol, asumí la responsabilidad de la evaluación heurística de interfaz y experiencia de usuario a partir del corte de los Días 6-8 para evitar vacíos en la entrega final del equipo[cite:3,4].
+**Integrantes:** Dahir Miguel Martinez Ortiz & Yahir Obed Martinez Ortiz  
+**Roles:** Desarrollo de Módulos (Backend) / Refactorización Integral de Interfaz y Experiencia de Usuario (UI/UX)  
+**Célula:** BitStream Innova  
+
+---
+
+### Justificación de Intervención y Cobertura de Rol
+
+Ante la ausencia de la integrante asignada originalmente a las tareas de interfaz y experiencia de usuario, asumimos de manera conjunta la responsabilidad de la auditoría heurística, el rediseño visual y la implementación técnica del sistema (UI/UX), combinando esfuerzos en el desarrollo y la modernización estética para garantizar la entrega profesional del proyecto.
+
+---
 
 ### Registro de Actividades por Fases
 
-#### Días 6 - 8: Auditoría Heurística y Diagnóstico Visual[cite:3,4]
-* **Actividad realizada:** Recorrido e inspección técnica de las plantillas Jinja2 dentro del paquete `market/templates/` y estilos CSS en `market/static/`[cite:3,15].
+#### Días 6 - 8: Auditoría Heurística y Diagnóstico Visual
+* **Actividad realizada:** Recorrido conjunto e inspección técnica de las plantillas Jinja2 dentro del paquete `market/templates/` y estilos CSS en `market/static/`.
 * **Hallazgos:**
-    - Uso consistente del sistema de rejilla (*grid*) de Bootstrap para presentar el catálogo y consistencia en los componentes de botones y tablas[cite:3,15].
-    - En el perfil de Cliente: ausencia de retroalimentación inmediata (*toast/alert*) al agregar productos al carrito y falta de jerarquía visual en los precios del catálogo[cite:15].
-    - En el perfil de Administrador: formularios de alta extensos sin validación visual diferenciada y tablas de pedidos sin paginación ni filtros por estado[cite:2,15].
-* **Dificultades:** Rastrear el flujo de datos dinámicos de los formularios únicamente a través de la sintaxis Jinja2 antes del despliegue completo del entorno local[cite:3].
-* **Entregable:** Archivo formal `docs/EVALUACION_UI_UX.md` integrado en el repositorio del equipo (`BitStreamInnova-GroStop`)[cite:4,15].
+  * Uso de una estructura base obsoleta y componentes de Bootstrap que requerían actualización urgente hacia un estándar profesional.
+  * Identificación de carencias en la retroalimentación al usuario y formularios administrativos saturados.
+* **Entregable:** Diagnóstico y estructuración del plan de modernización visual para el sistema.
 
-#### Días 9 - 11: Coordinación de Flujos y Documentación Visual del Sistema[cite:4]
-* **Actividad realizada:** Organización y revisión de la experiencia de usuario dentro del documento consolidado del sistema, garantizando la correcta integración gráfica de los diagramas de casos de uso y datos en Markdown[cite:4,12,13].
+#### Días 9 - 11: Coordinación de Flujos y Documentación del Sistema
+* **Actividad realizada:** Organización, revisión de flujos de experiencia de usuario y validación de la integración entre las vistas de cliente/administrador y las consultas al backend.
 * **Hallazgos:**
-    - Se comprobó que el flujo del usuario cliente requería clarificar visualmente las dependencias de compra (validación de existencias antes del procesamiento de la orden)[cite:12,13].
-    - Se organizó la estructura del repositorio ubicando los diagramas en la ruta `docs/img/` para una lectura clara y profesional en GitHub[cite:12,13].
-* **Entregable:** Sección de modelado e interfaces integrada en `docs/DESCRIPCION_DEL_SISTEMA.md`[cite:4,12,13].
+  * Necesidad imperativa de unificar la identidad gráfica en todas las plantillas y accesos.
+* **Entregable:** Consolidación de flujos de navegación integrados en la documentación del equipo.
 
-#### Días 13 - 14: Diagnóstico de Viabilidad e Intento de Implementación Visual[cite:3,4]
-* **Actividad realizada:** Intento de traslación e integración de las mejoras visuales planificadas (rediseño de tarjetas de catálogo con badges de disponibilidad y microinteracciones) sobre las plantillas HTML/Bootstrap del repositorio[cite:3,15].
-* **Dificultades:**
-    - No fue viable consolidar la implementación en código dentro de la rama activa debido a desfases en la estructura de plantillas y a que los esfuerzos inmediatos se concentraron en garantizar la estabilidad del arranque local del backend[cite:2,4].
-* **Entregable:** Especificación heurística y propuesta de mejora visual documentadas formalmente para ser retomadas en siguientes iteraciones[cite:4,15].
+#### Días 12 - 14: Modernización Integral y Refactorización a Flat Design (Fase Final)
+* **Actividad realizada:** Rediseño, codificación colaborativa y migración total de las vistas de la aplicación (`home.html`, `base.html`, `UserLogin.html`, `AdminLogin.html`, registros y paneles) hacia un sistema visual unificado de **Flat Design** minimalista.
+* **Implementación técnica:**
+  * Establecimiento de variables CSS globales (`--fd-accent`: `#0d7a6f`, `--fd-page`: `#f4f6f8`, `--fd-surface`: `#ffffff`).
+  * Reestructuración de layouts a un formato moderno de dos columnas tipo *split-screen* y tarjetas limpias con bordes sutiles de 1px.
+  * Sincronización de formularios y variables de Jinja2 asegurando estabilidad absoluta con Flask y MySQL.
+* **Entregable:** Interfaces de usuario modernizadas, responsivas y operando en el entorno local de pruebas (`http://127.0.0.1:5000`).
+
+#### Días 15: Sincronización y Despliegue en la Rama Principal
+* **Actividad realizada:** Consolidación de los cambios de código, control de versiones mediante Git y sincronización final en la rama `main` del repositorio remoto.
