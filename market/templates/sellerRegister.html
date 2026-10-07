@@ -1,52 +1,222 @@
+```html id="n4c8qp"
 {% extends 'base.html' %}
+
 {% block title %}
   Register Seller
 {% endblock %}
 
 {% block content %}
-<div class ="d-flex justify-content-center align-items-center min-vh-100" >
-<div style="max-width: 30%;">
-<form method ="POST" action="">
-  <h1 class="text-center">
-    Seller Enter your Details
-  </h1>
-    <div class="form-row">
-        <div class="col">
-          <input type="text" class="form-control" placeholder="First name" name="First_Name">
+  <style>
+    .fd-seller-register-page {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 16px;
+      box-sizing: border-box;
+    }
+
+    .fd-seller-register-card {
+      width: 100%;
+      max-width: 620px;
+      padding: 36px;
+      box-sizing: border-box;
+      background: var(--fd-surface);
+      border: 1px solid var(--fd-line);
+      border-radius: 8px;
+    }
+
+    .fd-seller-register-title {
+      margin: 0 0 28px;
+      color: var(--fd-ink);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 1.4;
+      text-align: center;
+    }
+
+    .fd-seller-name-fields {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .fd-seller-field {
+      margin-bottom: 18px;
+    }
+
+    .fd-seller-input {
+      display: block;
+      width: 100%;
+      min-height: 44px;
+      padding: 10px 12px;
+      box-sizing: border-box;
+      background: var(--fd-surface);
+      color: var(--fd-ink);
+      border: 1px solid var(--fd-line);
+      border-radius: 5px;
+      outline: none;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 14px;
+      transition: border-color 0.15s ease;
+    }
+
+    .fd-seller-input::placeholder {
+      color: var(--fd-muted);
+    }
+
+    .fd-seller-input:focus {
+      border-color: var(--fd-accent);
+    }
+
+    .fd-seller-help {
+      display: block;
+      margin-top: 7px;
+      color: var(--fd-muted);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .fd-seller-submit-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-top: 8px;
+    }
+
+    .fd-seller-submit {
+      min-width: 130px;
+      min-height: 44px;
+      padding: 10px 20px;
+    }
+
+    @media (max-width: 576px) {
+      .fd-seller-register-page {
+        padding: 24px 12px;
+      }
+
+      .fd-seller-register-card {
+        padding: 24px 20px;
+      }
+
+      .fd-seller-register-title {
+        font-size: 20px;
+      }
+
+      .fd-seller-name-fields {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+    }
+  </style>
+
+  <div class="fd-seller-register-page">
+    <div class="fd-seller-register-card">
+
+      <form method="POST" action="">
+
+        <h1 class="fd-seller-register-title">
+          Seller Enter your Details
+        </h1>
+
+        <div class="fd-seller-name-fields">
+
+          <div>
+            <input
+              type="text"
+              class="fd-seller-input"
+              placeholder="First name"
+              name="First_Name"
+            >
+          </div>
+
+          <div>
+            <input
+              type="text"
+              class="fd-seller-input"
+              placeholder="Last name"
+              name="Last_Name"
+            >
+          </div>
+
         </div>
-        <div class="col">
-          <input type="text" class="form-control" placeholder="Last name" name="Last_Name">
+
+        <div class="fd-seller-field">
+          <input
+            type="email"
+            class="fd-seller-input"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="Enter email"
+            name="Email"
+          >
+
+          <small
+            id="emailHelp"
+            class="fd-seller-help"
+          >
+            We'll never share your email with anyone else.
+          </small>
         </div>
+
+        <div class="fd-seller-field">
+          <input
+            type="password"
+            class="fd-seller-input"
+            id="exampleInputPassword1"
+            placeholder="Password"
+            name="Password"
+          >
+
+          <small
+            id="passwordHelpBlock"
+            class="fd-seller-help"
+          >
+            Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+          </small>
+        </div>
+
+        <div class="fd-seller-field">
+          <input
+            type="text"
+            class="fd-seller-input"
+            id="formGroupExampleInput"
+            placeholder="Mobile Number"
+            name="Phone_Number"
+          >
+
+          <small
+            id="emailHelp"
+            class="fd-seller-help"
+          >
+            Must be a 10 Digit Number
+          </small>
+        </div>
+
+        <div class="fd-seller-field">
+          <input
+            type="text"
+            class="fd-seller-input"
+            id="formGroupExampleInput"
+            placeholder="City Name"
+            name="Place_Of_Operation"
+          >
+        </div>
+
+        <div class="fd-seller-submit-wrapper">
+          <button
+            type="submit"
+            class="fd-button fd-seller-submit"
+          >
+            Submit
+          </button>
+        </div>
+
+      </form>
+
     </div>
-    
-    <div class="form-group" style="padding-top: 10px;">
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"
-      name = "Email">
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-    </div>
-    <div class="form-group">
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="Password">
-      <small id="passwordHelpBlock" class="form-text text-muted">
-        Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-      </small>
-    </div>
-    <div class="form-group">
-      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Mobile Number" name="Phone_Number">
-      <small id="emailHelp" class="form-text text-muted">Must be a 10 Digit Number</small>
-    </div>
-    <div class="form-group">
-        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="City Name" name="Place_Of_Operation">
-      </div>
-      <div class="text-center">
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </div>
-  </form>
-</div>
-</div>
-
-
-
-
-
-
+  </div>
 {% endblock %}
+```

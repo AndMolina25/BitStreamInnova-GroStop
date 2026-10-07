@@ -1,51 +1,207 @@
+```html
 {% extends 'base.html' %}
+
 {% block title %}
   Order Details
 {% endblock %}
 
 {% block content %}
-<div class ="d-flex justify-content-center align-items-center min-vh-100" >
-<div>
-<form method ="POST" action="">
-  <h1 class="text-center">
-    Your total amount is : RS <span style="color: red;">{{total_val}}</span>
-    <span></span>
-  </h1>
-  <h1 class="text-center">
-    Enter Your Order Details
-  </h1>
-  <div style="width: 50rem;">
+  <style>
+    .fd-order-page {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 16px;
+      box-sizing: border-box;
+    }
 
-    <div class="form-row" style="max-width: 100%;">
-        <div class="col">
-          <input type="text" class="form-control" placeholder="House Number" name="HNO">
-        </div>
-        <div class="col">
-          <input type="text" class="form-control" placeholder="City" name="City">
-        </div>
-        <div class="col">
-            <input type="text" class="form-control" placeholder="State" name="State">
-          </div>
+    .fd-order-card {
+      width: 100%;
+      max-width: 760px;
+      padding: 36px;
+      box-sizing: border-box;
+      background: var(--fd-surface);
+      border: 1px solid var(--fd-line);
+      border-radius: 8px;
+    }
 
-        <div class="col">
-            <input type="text" class="form-control" placeholder="Pincode" name="Pincode">
+    .fd-order-total {
+      margin: 0 0 12px;
+      color: var(--fd-ink);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 1.4;
+      text-align: center;
+    }
+
+    .fd-order-total-value {
+      color: var(--fd-accent);
+      font-weight: 700;
+    }
+
+    .fd-order-heading {
+      margin: 0 0 30px;
+      color: var(--fd-ink);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .fd-order-form {
+      width: 100%;
+    }
+
+    .fd-order-fields {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .fd-order-input {
+      width: 100%;
+      min-height: 44px;
+      padding: 10px 12px;
+      box-sizing: border-box;
+      background: var(--fd-surface);
+      color: var(--fd-ink);
+      border: 1px solid var(--fd-line);
+      border-radius: 5px;
+      outline: none;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 14px;
+      transition: border-color 0.15s ease;
+    }
+
+    .fd-order-input::placeholder {
+      color: var(--fd-muted);
+    }
+
+    .fd-order-input:focus {
+      border-color: var(--fd-accent);
+    }
+
+    .fd-order-payment {
+      margin-bottom: 24px;
+    }
+
+    .fd-order-submit-wrapper {
+      display: flex;
+      justify-content: center;
+    }
+
+    .fd-order-submit {
+      min-width: 150px;
+      min-height: 44px;
+      padding: 10px 20px;
+    }
+
+    @media (max-width: 768px) {
+      .fd-order-card {
+        max-width: 620px;
+        padding: 28px;
+      }
+
+      .fd-order-fields {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 576px) {
+      .fd-order-page {
+        padding: 24px 12px;
+      }
+
+      .fd-order-card {
+        padding: 22px 18px;
+      }
+
+      .fd-order-total {
+        font-size: 21px;
+      }
+
+      .fd-order-heading {
+        font-size: 18px;
+        margin-bottom: 24px;
+      }
+
+      .fd-order-fields {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <div class="fd-order-page">
+    <div class="fd-order-card">
+
+      <form method="POST" action="" class="fd-order-form">
+
+        <h1 class="fd-order-total">
+          Your total amount is :
+          RS <span class="fd-order-total-value">{{total_val}}</span>
+        </h1>
+
+        <h1 class="fd-order-heading">
+          Enter Your Order Details
+        </h1>
+
+        <div class="fd-order-fields">
+
+          <input
+            type="text"
+            class="fd-order-input"
+            placeholder="House Number"
+            name="HNO"
+          >
+
+          <input
+            type="text"
+            class="fd-order-input"
+            placeholder="City"
+            name="City"
+          >
+
+          <input
+            type="text"
+            class="fd-order-input"
+            placeholder="State"
+            name="State"
+          >
+
+          <input
+            type="text"
+            class="fd-order-input"
+            placeholder="Pincode"
+            name="Pincode"
+          >
+
         </div>
+
+        <div class="fd-order-payment">
+          <input
+            type="text"
+            class="fd-order-input"
+            id="formGroupExampleInput"
+            placeholder="Payment Mode"
+            name="Mode"
+          >
+        </div>
+
+        <div class="fd-order-submit-wrapper">
+          <button
+            type="submit"
+            class="fd-button fd-order-submit"
+          >
+            Place Order
+          </button>
+        </div>
+
+      </form>
+
     </div>
   </div>
-
-    <div class="form-group" style="margin-top: 5px;">
-        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Payment Mode" name="Mode">
-      </div>
-  <div class="text-center">
-    <button type="submit" class="btn btn-primary">Place Order</button>
-  </div>
-  </form>
-</div>
-</div>
-
-
-
-
-
-
 {% endblock %}
+```

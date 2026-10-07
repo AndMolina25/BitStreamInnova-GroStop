@@ -1,37 +1,104 @@
 {% extends 'base.html' %}
+
 {% block title %}
   Customer Login
 {% endblock %}
 
 {% block content %}
-<div class ="d-flex justify-content-center align-items-center min-vh-100" >
-<div style="max-width: 30%;">
-<form method ="POST" action="">
-  <h1 class="text-center">
-    User Enter your Authentication Details
-  </h1>
-    
-    <div class="form-group" style="padding-top: 10px;">
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email"
-      name = "Email">
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-    </div>
-    <div class="form-group" >
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="Password">
-      <small id="passwordHelpBlock" class="form-text text-muted">
-        Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-      </small>
-    </div>
-  <div class="text-center">
-    <button type="submit" class="btn btn-primary">Submit</button>
+<style>
+  /* Flat design: mismos tokens que home.html */
+  .fd-auth {
+    --fd-ink: #1c2530;
+    --fd-muted: #5f6b7a;
+    --fd-line: #dde2e8;
+    --fd-surface: #ffffff;
+    --fd-page: #f4f6f8;
+    --fd-accent: #0d7a6f;
+    --fd-accent-hover: #0a5f56;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--fd-ink);
+    background: var(--fd-page);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    padding: 24px 16px;
+  }
+  .fd-auth-card {
+    width: 100%;
+    max-width: 420px;
+    padding: 32px 28px;
+    background: var(--fd-surface);
+    border: 1px solid var(--fd-line);
+    border-radius: 8px;
+  }
+  .fd-auth-title { margin: 0 0 4px; font-size: 1.5rem; font-weight: 700; line-height: 1.25; }
+  .fd-auth-sub { margin: 0 0 24px; font-size: 0.95rem; color: var(--fd-muted); }
+
+  .fd-field { margin-bottom: 18px; }
+  .fd-field label { display: block; margin-bottom: 6px; font-size: 0.9rem; font-weight: 600; }
+  .fd-field input {
+    display: block;
+    width: 100%;
+    height: 44px;
+    padding: 0 14px;
+    font-size: 1rem;
+    color: var(--fd-ink);
+    background: var(--fd-surface);
+    border: 1px solid var(--fd-line);
+    border-radius: 6px;
+  }
+  .fd-field input::placeholder { color: var(--fd-muted); }
+  .fd-field input:focus { border-color: var(--fd-accent); }
+  .fd-field input:focus-visible { outline: 3px solid #7fc4bb; outline-offset: 1px; }
+  .fd-hint { display: block; margin-top: 6px; font-size: 0.82rem; line-height: 1.4; color: var(--fd-muted); }
+
+  .fd-submit {
+    width: 100%;
+    height: 44px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    background: var(--fd-accent);
+    border: 1px solid var(--fd-accent);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+  }
+  .fd-submit:hover { background: var(--fd-accent-hover); border-color: var(--fd-accent-hover); }
+  .fd-submit:focus-visible { outline: 3px solid #7fc4bb; outline-offset: 2px; }
+
+  .fd-auth-foot { margin: 20px 0 0; text-align: center; font-size: 0.92rem; color: var(--fd-muted); }
+  .fd-auth-foot a { font-weight: 600; color: var(--fd-accent); text-decoration: none; }
+  .fd-auth-foot a:hover { color: var(--fd-accent-hover); text-decoration: underline; }
+</style>
+
+<div class="fd-auth">
+  <div class="fd-auth-card">
+    <form method="POST" action="">
+      <h1 class="fd-auth-title">Customer login</h1>
+      <p class="fd-auth-sub">Enter your email and password to continue.</p>
+
+      <div class="fd-field">
+        <label for="exampleInputEmail1">Email</label>
+        <input type="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="you@example.com"
+               name="Email" autocomplete="email" required>
+        <small id="emailHelp" class="fd-hint">We'll never share your email with anyone else.</small>
+      </div>
+
+      <div class="fd-field">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" id="exampleInputPassword1" aria-describedby="passwordHelpBlock" placeholder="Password"
+               name="Password" autocomplete="current-password" required>
+        <small id="passwordHelpBlock" class="fd-hint">
+          Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+        </small>
+      </div>
+
+      <button type="submit" class="fd-submit">Submit</button>
+    </form>
+
+    <p class="fd-auth-foot">New here? <a href="{{ url_for('customerRegister') }}">Create an account</a></p>
   </div>
-  </form>
 </div>
-</div>
-
-
-
-
-
-
 {% endblock %}

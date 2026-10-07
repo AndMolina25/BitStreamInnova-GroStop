@@ -1,35 +1,167 @@
 <!-- inherit the template -->
-{% extends 'base.html' %} {% block title %} Welcome to onlineStore {% endblock
-%} {% block content %}
-<div class="container-fuild">
-  <div class="row" style="margin-left: 20px;">
+{% extends 'base.html' %}
+
+{% block title %} Welcome to onlineStore {% endblock %}
+
+{% block content %}
+<style>
+  /* Flat design: sin sombras, bordes de 1px, un solo color de acento */
+  .fd-wrap {
+    --fd-ink: #1c2530;
+    --fd-muted: #5f6b7a;
+    --fd-line: #dde2e8;
+    --fd-surface: #ffffff;
+    --fd-page: #f4f6f8;
+    --fd-accent: #0d7a6f;
+    --fd-accent-hover: #0a5f56;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--fd-ink);
+    background: var(--fd-page);
+    padding: 24px 20px 40px;
+    min-height: 70vh;
+  }
+  .fd-inner { max-width: 1200px; margin: 0 auto; }
+
+  /* Buscador */
+  .fd-search { display: flex; gap: 8px; margin-bottom: 8px; max-width: 560px; }
+  .fd-search input[type="search"] {
+    flex: 1;
+    min-width: 0;
+    height: 42px;
+    padding: 0 14px;
+    font-size: 1rem;
+    color: var(--fd-ink);
+    background: var(--fd-surface);
+    border: 1px solid var(--fd-line);
+    border-radius: 6px;
+  }
+  .fd-search input[type="search"]::placeholder { color: var(--fd-muted); }
+  .fd-status { margin: 0 0 20px; font-size: 0.9rem; color: var(--fd-muted); }
+
+  /* Botones planos */
+  .fd-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 42px;
+    padding: 0 18px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #fff;
+    background: var(--fd-accent);
+    border: 1px solid var(--fd-accent);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+  }
+  .fd-btn:hover { background: var(--fd-accent-hover); border-color: var(--fd-accent-hover); color: #fff; text-decoration: none; }
+  .fd-btn-ghost { color: var(--fd-ink); background: transparent; border-color: var(--fd-line); }
+  .fd-btn-ghost:hover { color: var(--fd-ink); background: var(--fd-surface); border-color: var(--fd-muted); }
+  .fd-btn:focus-visible,
+  .fd-search input:focus-visible { outline: 3px solid #7fc4bb; outline-offset: 2px; }
+  .fd-btn-block { width: 100%; }
+
+  /* Catálogo */
+  .fd-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+  }
+  .fd-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--fd-surface);
+    border: 1px solid var(--fd-line);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .fd-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    background: var(--fd-line);
+  }
+  .fd-body { display: flex; flex-direction: column; flex: 1; padding: 14px 16px 16px; }
+  .fd-name { margin: 0 0 2px; font-size: 1.05rem; font-weight: 600; line-height: 1.3; overflow-wrap: anywhere; }
+  .fd-brand { margin: 0 0 12px; font-size: 0.9rem; color: var(--fd-muted); }
+  .fd-price { margin: 0 0 14px; font-size: 1.15rem; font-weight: 700; }
+  .fd-body form { margin-top: auto; }
+
+  /* Sin resultados */
+  .fd-empty {
+    padding: 40px 20px;
+    text-align: center;
+    color: var(--fd-muted);
+    background: var(--fd-surface);
+    border: 1px dashed var(--fd-line);
+    border-radius: 8px;
+  }
+
+  /* Botón My Cart (barra de navegación) */
+  .fd-cart-btn {
+    height: 38px;
+    padding: 0 16px;
+    font-weight: 600;
+    color: #fff;
+    background: var(--fd-accent, #0d7a6f);
+    border: 1px solid var(--fd-accent, #0d7a6f);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+  }
+  .fd-cart-btn:hover { background: #0a5f56; border-color: #0a5f56; }
+  .fd-cart-btn:focus-visible { outline: 3px solid #7fc4bb; outline-offset: 2px; }
+</style>
+
+<div class="fd-wrap">
+  <div class="fd-inner">
+
+    <!-- Buscador: envía ?q=... por GET a esta misma ruta -->
+    <form class="fd-search" method="GET" action="" role="search">
+      <input type="search" name="q" value="{{ q or '' }}" placeholder="Search products by name" aria-label="Search products">
+      <button type="submit" class="fd-btn">Search</button>
+      {% if q %}
+      <a class="fd-btn fd-btn-ghost" href="{{ request.path }}">Clear</a>
+      {% endif %}
+    </form>
+    <p class="fd-status" aria-live="polite">
+      {% if q %}{{ list|length }} result(s) for "{{ q }}"{% else %}{{ list|length }} product(s){% endif %}
+    </p>
+
+    <!-- inherit the template -->
     <!-- {% set userID = userID %} -->
-    {% for dict in list%}
-    <div class="col-2.4">
-      <div class="card" style="width: 15rem;margin: 5px;">
-        <img class="card-img-top" src="https://picsum.photos/100" alt="Card image cap"/>
-        <div class="card-body">
-          <h5 class="card-title text-primary">Name: {{dict.Name}}</h5>
-          <h5 class="card-title text-success">Brand: {{dict.Brand}}</h5>
-          <h5 class="card-title text-danger">Price: RS {{dict.Price}}</h5>
+    <div class="fd-grid">
+      {% for dict in list %}
+      <div class="fd-card">
+        <img src="https://picsum.photos/300/225" alt="{{ dict.Name }}" loading="lazy">
+        <div class="fd-body">
+          <h5 class="fd-name">{{ dict.Name }}</h5>
+          <p class="fd-brand">Brand: {{ dict.Brand }}</p>
+          <p class="fd-price">RS {{ dict.Price }}</p>
           <form action="" method="GET">
-            <input type="hidden" name="Name" value="{{dict.Name}}">
-            <input type="hidden" name="Brand" value="{{dict.Brand}}">
-            <input type="hidden" name="Price" value="{{dict.Price}}">
-            <button type="submit" class="btn btn-primary">Add to Cart</button>
+            <input type="hidden" name="Name" value="{{ dict.Name }}">
+            <input type="hidden" name="Brand" value="{{ dict.Brand }}">
+            <input type="hidden" name="Price" value="{{ dict.Price }}">
+            {% if q %}<input type="hidden" name="q" value="{{ q }}">{% endif %}
+            <button type="submit" class="fd-btn fd-btn-block">Add to Cart</button>
           </form>
-          <!-- <a href="#" class="btn btn-primary">Add to Cart</a> -->
         </div>
       </div>
+      {% else %}
+      <div class="fd-empty" style="grid-column: 1 / -1;">
+        {% if q %}No products match "{{ q }}". Try a different name or clear the search.{% else %}There are no products in the catalog yet.{% endif %}
+      </div>
+      {% endfor %}
     </div>
-    {% endfor %}
+
   </div>
-  {% endblock %}
-
-  {% block navBar %}
-  <form class="form-inline my-2 my-lg-0" method="POST",action="">
-    <button class="btn btn-outline-success my-2 my-sm-0 text-light bg-dark" type="submit">My Cart</button>
-  </form>
-  {% endblock %}
-
 </div>
+{% endblock %}
+
+{% block navBar %}
+<form class="form-inline my-2 my-lg-0" method="POST" action="">
+  <button class="fd-cart-btn" type="submit">My Cart</button>
+</form>
+{% endblock %}

@@ -1,30 +1,165 @@
+```jinja2
 {% extends 'base.html' %}
+
 {% block title %}
   Seller Panel
 {% endblock %}
 
 {% block content %}
-<div class ="d-flex justify-content-center align-items-center min-vh-100" >
-<div style="max-width: 30%;">
-<form method ="POST" action="">
-  <h1 class="text-center">
-    Enter Product Details
-  </h1>
-    
-    <div class="form-group" style="padding-top: 10px;">
-      <input class="form-control" id="exampleInputEmail1" placeholder="Product Name"
-      name = "Name">
-    </div>
-    <div class="form-group" >
-      <input class="form-control" id="exampleInputPassword1" placeholder="Brand" name="Brand">
-    </div>
-    <div class="form-group" >
-        <input class="form-control" id="exampleInputPassword1" placeholder="Quantity to Add" name="Quantity">
+
+<style>
+  .fd-product-page {
+    min-height: calc(100vh - 65px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 16px;
+  }
+
+  .fd-product-card {
+    width: 100%;
+    max-width: 560px;
+    padding: 32px;
+    background-color: var(--fd-surface);
+    border: 1px solid var(--fd-line);
+    border-radius: 8px;
+  }
+
+  .fd-product-title {
+    margin: 0 0 28px;
+    color: var(--fd-ink);
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .fd-field {
+    margin-bottom: 18px;
+  }
+
+  .fd-label {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--fd-ink);
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .fd-input {
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 12px;
+    color: var(--fd-ink);
+    background-color: var(--fd-surface);
+    border: 1px solid var(--fd-line);
+    border-radius: 5px;
+    outline: none;
+    font-family: inherit;
+    font-size: 15px;
+    transition: border-color 0.15s ease;
+  }
+
+  .fd-input::placeholder {
+    color: var(--fd-muted);
+  }
+
+  .fd-input:focus {
+    border-color: var(--fd-accent);
+  }
+
+  .fd-submit-container {
+    margin-top: 26px;
+    text-align: center;
+  }
+
+  .fd-submit {
+    min-height: 44px;
+    padding: 10px 24px;
+    color: #ffffff;
+    background-color: var(--fd-accent);
+    border: 1px solid var(--fd-accent);
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+  }
+
+  .fd-submit:hover {
+    background-color: var(--fd-accent-hover);
+    border-color: var(--fd-accent-hover);
+  }
+
+  @media (max-width: 576px) {
+    .fd-product-page {
+      padding: 24px 16px;
+    }
+
+    .fd-product-card {
+      padding: 24px 20px;
+    }
+
+    .fd-product-title {
+      font-size: 24px;
+    }
+  }
+</style>
+
+<div class="fd-product-page">
+  <div class="fd-product-card">
+
+    <form method="POST" action="">
+      <h1 class="fd-product-title">
+        Enter Product Details
+      </h1>
+
+      <div class="fd-field">
+        <label class="fd-label" for="product-name">
+          Product Name
+        </label>
+        <input
+          class="fd-input"
+          id="product-name"
+          placeholder="Product Name"
+          name="Name"
+        >
       </div>
-  <div class="text-center">
-    <button type="submit" class="btn btn-primary">Submit</button>
+
+      <div class="fd-field">
+        <label class="fd-label" for="brand">
+          Brand
+        </label>
+        <input
+          class="fd-input"
+          id="brand"
+          placeholder="Brand"
+          name="Brand"
+        >
+      </div>
+
+      <div class="fd-field">
+        <label class="fd-label" for="quantity">
+          Quantity to Add
+        </label>
+        <input
+          class="fd-input"
+          id="quantity"
+          placeholder="Quantity to Add"
+          name="Quantity"
+        >
+      </div>
+
+      <div class="fd-submit-container">
+        <button type="submit" class="fd-submit">
+          Submit
+        </button>
+      </div>
+    </form>
+
   </div>
-  </form>
 </div>
-</div>
+
 {% endblock %}
+```

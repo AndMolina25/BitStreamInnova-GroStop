@@ -1,53 +1,259 @@
+```jinja2
 {% extends 'base.html' %}
+
 {% block title %}
   Register Seller
 {% endblock %}
 
 {% block content %}
-<div class ="d-flex justify-content-center align-items-center min-vh-100" >
-<div style="max-width: 30%;">
-<form method ="POST" action="">
-  <h1 class="text-center">
-    Enter Seller Details
-  </h1>
-    <div class="form-row">
-        <div class="col">
-          <input type="text" class="form-control" placeholder="First name" name="First_Name">
-        </div>
-        <div class="col">
-          <input type="text" class="form-control" placeholder="Last name" name="Last_Name">
-        </div>
-    </div>
-    
-    <div class="form-group" style="padding-top: 10px;">
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email"
-      name = "Email">
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-    </div>
-    <div class="form-group" >
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="Password">
-      <small id="passwordHelpBlock" class="form-text text-muted">
-        Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-      </small>
-    </div>
-    <div class="form-group">
-      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Mobile Number" name="Phone_Number">
-      <small id="emailHelp" class="form-text text-muted">Must be a 10 Digit Number</small>
-    </div>
 
-    <div class="form-group">
-        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Place of Operation" name="Place_Of_Operation">
+<style>
+  .fd-seller-page {
+    min-height: calc(100vh - 65px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 16px;
+  }
+
+  .fd-seller-card {
+    width: 100%;
+    max-width: 620px;
+    padding: 32px;
+    background-color: var(--fd-surface);
+    border: 1px solid var(--fd-line);
+    border-radius: 8px;
+  }
+
+  .fd-seller-title {
+    margin: 0 0 28px;
+    color: var(--fd-ink);
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .fd-name-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+
+  .fd-field {
+    margin-bottom: 18px;
+  }
+
+  .fd-name-row .fd-field {
+    margin-bottom: 0;
+  }
+
+  .fd-label {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--fd-ink);
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .fd-input {
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 12px;
+    color: var(--fd-ink);
+    background-color: var(--fd-surface);
+    border: 1px solid var(--fd-line);
+    border-radius: 5px;
+    outline: none;
+    font-family: inherit;
+    font-size: 15px;
+    transition: border-color 0.15s ease;
+  }
+
+  .fd-input::placeholder {
+    color: var(--fd-muted);
+  }
+
+  .fd-input:focus {
+    border-color: var(--fd-accent);
+  }
+
+  .fd-help {
+    display: block;
+    margin-top: 6px;
+    color: var(--fd-muted);
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .fd-submit-container {
+    margin-top: 26px;
+    text-align: center;
+  }
+
+  .fd-submit {
+    min-height: 44px;
+    padding: 10px 24px;
+    color: #ffffff;
+    background-color: var(--fd-accent);
+    border: 1px solid var(--fd-accent);
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+  }
+
+  .fd-submit:hover {
+    background-color: var(--fd-accent-hover);
+    border-color: var(--fd-accent-hover);
+  }
+
+  @media (max-width: 576px) {
+    .fd-seller-page {
+      padding: 24px 16px;
+    }
+
+    .fd-seller-card {
+      padding: 24px 20px;
+    }
+
+    .fd-seller-title {
+      font-size: 24px;
+    }
+
+    .fd-name-row {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    .fd-name-row .fd-field {
+      margin-bottom: 18px;
+    }
+  }
+</style>
+
+<div class="fd-seller-page">
+  <div class="fd-seller-card">
+
+    <form method="POST" action="">
+
+      <h1 class="fd-seller-title">
+        Enter Seller Details
+      </h1>
+
+      <div class="fd-name-row">
+
+        <div class="fd-field">
+          <label class="fd-label" for="first-name">
+            First Name
+          </label>
+          <input
+            type="text"
+            class="fd-input"
+            id="first-name"
+            placeholder="First name"
+            name="First_Name"
+          >
+        </div>
+
+        <div class="fd-field">
+          <label class="fd-label" for="last-name">
+            Last Name
+          </label>
+          <input
+            type="text"
+            class="fd-input"
+            id="last-name"
+            placeholder="Last name"
+            name="Last_Name"
+          >
+        </div>
+
       </div>
 
-  <div class="text-center">
-    <button type="submit" class="btn btn-primary">Submit</button>
+      <div class="fd-field">
+        <label class="fd-label" for="seller-email">
+          Email
+        </label>
+        <input
+          type="email"
+          class="fd-input"
+          id="seller-email"
+          placeholder="Email"
+          name="Email"
+        >
+        <small class="fd-help">
+          We'll never share your email with anyone else.
+        </small>
+      </div>
+
+      <div class="fd-field">
+        <label class="fd-label" for="seller-password">
+          Password
+        </label>
+        <input
+          type="password"
+          class="fd-input"
+          id="seller-password"
+          placeholder="Password"
+          name="Password"
+        >
+        <small class="fd-help">
+          Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+        </small>
+      </div>
+
+      <div class="fd-field">
+        <label class="fd-label" for="phone-number">
+          Mobile Number
+        </label>
+        <input
+          type="text"
+          class="fd-input"
+          id="phone-number"
+          placeholder="Mobile Number"
+          name="Phone_Number"
+        >
+        <small class="fd-help">
+          Must be a 10 Digit Number
+        </small>
+      </div>
+
+      <div class="fd-field">
+        <label class="fd-label" for="place-of-operation">
+          Place of Operation
+        </label>
+        <input
+          type="text"
+          class="fd-input"
+          id="place-of-operation"
+          placeholder="Place of Operation"
+          name="Place_Of_Operation"
+        >
+      </div>
+
+      <div class="fd-submit-container">
+        <button type="submit" class="fd-submit">
+          Submit
+        </button>
+      </div>
+
+    </form>
+
   </div>
-  </form>
 </div>
-</div>
+
 {% endblock %}
 
 {% block navBar %}
-<a class="btn btn-outline-success my-2 my-sm-0 text-light bg-dark" href="/admin/{{admin_id}}">Go Back</a>
-
+<a
+  class="fd-nav-link"
+  href="/admin/{{admin_id}}"
+>
+  Go Back
+</a>
 {% endblock %}
+```

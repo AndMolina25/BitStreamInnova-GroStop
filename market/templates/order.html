@@ -1,36 +1,230 @@
-<!-- inherit the template -->
-{% extends 'base.html' %} {% block title %} Welcome to onlineStore {% endblock
-    %} {% block content %}
-    <div class="container-fuild">
-      <div class="row" style="margin-left: 20px;">
-        <!-- {% set userID = userID %} -->
-        {% for dict in list%}
-        <div class="col-3">
-          <div class="card" style="width: 15rem;margin: 5px;">
-            <img class="card-img-top" src="https://picsum.photos/100" alt="Card image cap"/>
-            <div class="card-body">
-              <h5 class="card-title text-primary">Name: {{dict.Name}}</h5>
-              <h5 class="card-title text-success">Brand: {{dict.Brand}}</h5>
-              <h5 class="card-title text-danger">Price: RS {{dict.Price}}</h5>
-              <!-- <a href="#" class="btn btn-primary">Add to Cart</a> -->
-            </div>
-          </div>
-        </div>
-        {% endfor %}
+```html
+{% extends 'base.html' %}
 
-      </div>
-      {% endblock %}
-    
-      {% block navBar %}
-      <div style="margin: 5px;">
-        <form class="form-inline my-2 my-lg-0" method="POST">
-            <input class="form-control mr-sm-2" type="search" placeholder="Coupon_Code" name = "Promo_Code">
-            <button class="btn btn-danger my-2 my-sm-0 text-light " type="submit">Place Order</button>
-        </form>
-      </div>
-      <!-- <a class="btn btn-outline-success my-2 my-sm-0 text-light bg-dark" href="/home/{{user_id}}">Go Back</a> -->
+{% block title %}
+  Welcome to onlineStore
+{% endblock %}
 
-      {% endblock %}
-      
+{% block content %}
+  <style>
+    .fd-products-page {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 32px 16px;
+    }
+
+    .fd-products-header {
+      max-width: 1200px;
+      margin: 0 auto 24px;
+    }
+
+    .fd-products-title {
+      margin: 0;
+      color: var(--fd-ink);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 24px;
+      font-weight: 650;
+    }
+
+    .fd-products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .fd-product-card {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      overflow: hidden;
+      background: var(--fd-surface);
+      border: 1px solid var(--fd-line);
+      border-radius: 8px;
+    }
+
+    .fd-product-image {
+      display: block;
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-bottom: 1px solid var(--fd-line);
+    }
+
+    .fd-product-body {
+      padding: 18px;
+    }
+
+    .fd-product-name,
+    .fd-product-brand,
+    .fd-product-price {
+      margin: 0 0 10px;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.4;
+    }
+
+    .fd-product-name {
+      color: var(--fd-ink);
+      font-size: 17px;
+      font-weight: 650;
+    }
+
+    .fd-product-brand {
+      color: var(--fd-muted);
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .fd-product-price {
+      margin-bottom: 0;
+      color: var(--fd-accent);
+      font-size: 16px;
+      font-weight: 650;
+    }
+
+    @media (max-width: 992px) {
+      .fd-products-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      .fd-products-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 576px) {
+      .fd-products-page {
+        padding: 24px 12px;
+      }
+
+      .fd-products-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .fd-product-image {
+        height: 210px;
+      }
+    }
+  </style>
+
+  <div class="fd-products-page">
+
+    <div class="fd-products-header">
+      <h1 class="fd-products-title">Products</h1>
     </div>
-    
+
+    <div class="fd-products-grid">
+
+      <!-- {% set userID = userID %} -->
+
+      {% for dict in list %}
+        <div class="fd-product-card">
+
+          <img
+            class="fd-product-image"
+            src="https://picsum.photos/100"
+            alt="Product image"
+          />
+
+          <div class="fd-product-body">
+            <h2 class="fd-product-name">
+              Name: {{dict.Name}}
+            </h2>
+
+            <p class="fd-product-brand">
+              Brand: {{dict.Brand}}
+            </p>
+
+            <p class="fd-product-price">
+              Price: RS {{dict.Price}}
+            </p>
+          </div>
+
+        </div>
+      {% endfor %}
+
+    </div>
+
+  </div>
+{% endblock %}
+
+{% block navBar %}
+  <div class="fd-navbar-order">
+    <form method="POST" class="fd-navbar-order-form">
+      <input
+        type="search"
+        placeholder="Coupon_Code"
+        name="Promo_Code"
+        class="fd-navbar-order-input"
+      >
+
+      <button
+        type="submit"
+        class="fd-button fd-navbar-order-button"
+      >
+        Place Order
+      </button>
+    </form>
+  </div>
+
+  <style>
+    .fd-navbar-order {
+      margin-left: auto;
+    }
+
+    .fd-navbar-order-form {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0;
+    }
+
+    .fd-navbar-order-input {
+      width: 150px;
+      height: 38px;
+      padding: 8px 10px;
+      box-sizing: border-box;
+      background: var(--fd-surface);
+      color: var(--fd-ink);
+      border: 1px solid var(--fd-line);
+      border-radius: 5px;
+      outline: none;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 14px;
+    }
+
+    .fd-navbar-order-input::placeholder {
+      color: var(--fd-muted);
+    }
+
+    .fd-navbar-order-input:focus {
+      border-color: var(--fd-accent);
+    }
+
+    .fd-navbar-order-button {
+      min-height: 38px;
+      padding: 8px 14px;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 576px) {
+      .fd-navbar-order {
+        width: 100%;
+        margin: 8px 0 0;
+      }
+
+      .fd-navbar-order-form {
+        width: 100%;
+      }
+
+      .fd-navbar-order-input {
+        flex: 1;
+        width: auto;
+      }
+    }
+  </style>
+{% endblock %}
+```

@@ -1,43 +1,194 @@
+```html
 {% extends 'base.html' %}
+
 {% block title %}
   Customer Login
 {% endblock %}
 
 {% block content %}
-<div class ="d-flex justify-content-center align-items-center min-vh-100" >
-<div style="max-width: 30%;">
-<form method ="POST" action="">
-  <h1 class="text-center">
-    Admin Enter your Authentication Details
-  </h1>
-    
-    <div class="form-group" style="padding-top: 10px;">
-      <input class="form-control" id="exampleInputEmail1" placeholder="First Name"
-      name = "First_Name">
-    </div>
 
-    <div class="form-group" style="padding-top: 10px;">
-        <input class="form-control" id="exampleInputEmail1" placeholder="Last Name"
-        name = "Last_Name">
+<style>
+  :root {
+    --fd-ink: #1c2530;
+    --fd-muted: #5f6b7a;
+    --fd-line: #dde2e8;
+    --fd-surface: #ffffff;
+    --fd-page: #f4f6f8;
+    --fd-accent: #0d7a6f;
+    --fd-accent-hover: #0a5f56;
+  }
+
+  .fd-login-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 32px 16px;
+    background: var(--fd-page);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+                 sans-serif;
+    color: var(--fd-ink);
+  }
+
+  .fd-login-card {
+    width: 100%;
+    max-width: 420px;
+    background: var(--fd-surface);
+    border: 1px solid var(--fd-line);
+    border-radius: 8px;
+    padding: 32px;
+  }
+
+  .fd-login-title {
+    margin: 0 0 8px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--fd-ink);
+  }
+
+  .fd-login-subtitle {
+    margin: 0 0 28px;
+    text-align: center;
+    font-size: 14px;
+    color: var(--fd-muted);
+  }
+
+  .fd-form-group {
+    margin-bottom: 18px;
+  }
+
+  .fd-label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--fd-ink);
+  }
+
+  .fd-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 11px 12px;
+    border: 1px solid var(--fd-line);
+    border-radius: 5px;
+    background: var(--fd-surface);
+    color: var(--fd-ink);
+    font-size: 15px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.15s ease;
+  }
+
+  .fd-input::placeholder {
+    color: var(--fd-muted);
+  }
+
+  .fd-input:focus {
+    border-color: var(--fd-accent);
+  }
+
+  .fd-help {
+    display: block;
+    margin-top: 7px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--fd-muted);
+  }
+
+  .fd-submit-container {
+    margin-top: 24px;
+  }
+
+  .fd-submit {
+    width: 100%;
+    padding: 11px 16px;
+    border: 1px solid var(--fd-accent);
+    border-radius: 5px;
+    background: var(--fd-accent);
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-color 0.15s ease,
+                border-color 0.15s ease;
+  }
+
+  .fd-submit:hover {
+    background: var(--fd-accent-hover);
+    border-color: var(--fd-accent-hover);
+  }
+</style>
+
+<div class="fd-login-page">
+  <div class="fd-login-card">
+
+    <form method="POST" action="">
+
+      <h1 class="fd-login-title">
+        Admin Enter your Authentication Details
+      </h1>
+
+      <p class="fd-login-subtitle">
+        Enter your credentials to continue.
+      </p>
+
+      <div class="fd-form-group">
+        <label class="fd-label" for="exampleInputEmail1">
+          First Name
+        </label>
+
+        <input
+          class="fd-input"
+          id="exampleInputEmail1"
+          placeholder="First Name"
+          name="First_Name"
+        >
       </div>
 
+      <div class="fd-form-group">
+        <label class="fd-label" for="exampleInputLastName">
+          Last Name
+        </label>
 
-    <div class="form-group" >
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="Password">
-      <small id="passwordHelpBlock" class="form-text text-muted">
-        Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-      </small>
-    </div>
-  <div class="text-center">
-    <button type="submit" class="btn btn-primary">Submit</button>
+        <input
+          class="fd-input"
+          id="exampleInputLastName"
+          placeholder="Last Name"
+          name="Last_Name"
+        >
+      </div>
+
+      <div class="fd-form-group">
+        <label class="fd-label" for="exampleInputPassword1">
+          Password
+        </label>
+
+        <input
+          type="password"
+          class="fd-input"
+          id="exampleInputPassword1"
+          placeholder="Password"
+          name="Password"
+        >
+
+        <small id="passwordHelpBlock" class="fd-help">
+          Your password must be 8-20 characters long, contain letters and
+          numbers, and must not contain spaces, special characters, or emoji.
+        </small>
+      </div>
+
+      <div class="fd-submit-container">
+        <button type="submit" class="fd-submit">
+          Submit
+        </button>
+      </div>
+
+    </form>
+
   </div>
-  </form>
 </div>
-</div>
-
-
-
-
-
 
 {% endblock %}
+```

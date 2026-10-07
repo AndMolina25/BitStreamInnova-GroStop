@@ -1,43 +1,186 @@
+```jinja2
 {% extends 'base.html' %}
+
 {% block title %}
   Seller Panel
 {% endblock %}
 
 {% block content %}
-<div class ="d-flex justify-content-center align-items-center min-vh-100" >
-<div style="max-width: 30%;">
-<form method ="POST" action="">
-  <h1 class="text-center">
-    Enter Offer Details
-  </h1>
-    
-    <div class="form-group" style="padding-top: 10px;">
-      <input class="form-control" id="exampleInputEmail1" placeholder="Promo Code" name = "Promo_Code">
-    </div>
-    <div class="form-group" >
-      <input class="form-control" id="exampleInputPassword1" placeholder="Percentage Discount" name="Percentage_Discount">
-    </div>
-    <div class="form-group" >
-        <input class="form-control" id="exampleInputPassword1" placeholder="Min Order Value" name="Min_OrderValue">
+
+<style>
+  .fd-offer-page {
+    min-height: calc(100vh - 65px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 16px;
+  }
+
+  .fd-offer-card {
+    width: 100%;
+    max-width: 560px;
+    padding: 32px;
+    background-color: var(--fd-surface);
+    border: 1px solid var(--fd-line);
+    border-radius: 8px;
+  }
+
+  .fd-offer-title {
+    margin: 0 0 28px;
+    color: var(--fd-ink);
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .fd-field {
+    margin-bottom: 18px;
+  }
+
+  .fd-label {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--fd-ink);
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .fd-input {
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 12px;
+    color: var(--fd-ink);
+    background-color: var(--fd-surface);
+    border: 1px solid var(--fd-line);
+    border-radius: 5px;
+    outline: none;
+    font-family: inherit;
+    font-size: 15px;
+    transition: border-color 0.15s ease;
+  }
+
+  .fd-input::placeholder {
+    color: var(--fd-muted);
+  }
+
+  .fd-input:focus {
+    border-color: var(--fd-accent);
+  }
+
+  .fd-submit-container {
+    margin-top: 26px;
+    text-align: center;
+  }
+
+  .fd-submit {
+    min-height: 44px;
+    padding: 10px 24px;
+    color: #ffffff;
+    background-color: var(--fd-accent);
+    border: 1px solid var(--fd-accent);
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+  }
+
+  .fd-submit:hover {
+    background-color: var(--fd-accent-hover);
+    border-color: var(--fd-accent-hover);
+  }
+
+  @media (max-width: 576px) {
+    .fd-offer-page {
+      padding: 24px 16px;
+    }
+
+    .fd-offer-card {
+      padding: 24px 20px;
+    }
+
+    .fd-offer-title {
+      font-size: 24px;
+    }
+  }
+</style>
+
+<div class="fd-offer-page">
+  <div class="fd-offer-card">
+
+    <form method="POST" action="">
+      <h1 class="fd-offer-title">
+        Enter Offer Details
+      </h1>
+
+      <div class="fd-field">
+        <label class="fd-label" for="promo-code">
+          Promo Code
+        </label>
+        <input
+          class="fd-input"
+          id="promo-code"
+          placeholder="Promo Code"
+          name="Promo_Code"
+        >
       </div>
 
-      <div class="form-group" >
-        <input class="form-control" id="exampleInputPassword1" placeholder="Maximum Discount" name="Max_Discount">
+      <div class="fd-field">
+        <label class="fd-label" for="percentage-discount">
+          Percentage Discount
+        </label>
+        <input
+          class="fd-input"
+          id="percentage-discount"
+          placeholder="Percentage Discount"
+          name="Percentage_Discount"
+        >
       </div>
-  <div class="text-center">
-    <button type="submit" class="btn btn-primary">Submit</button>
+
+      <div class="fd-field">
+        <label class="fd-label" for="min-order-value">
+          Min Order Value
+        </label>
+        <input
+          class="fd-input"
+          id="min-order-value"
+          placeholder="Min Order Value"
+          name="Min_OrderValue"
+        >
+      </div>
+
+      <div class="fd-field">
+        <label class="fd-label" for="max-discount">
+          Maximum Discount
+        </label>
+        <input
+          class="fd-input"
+          id="max-discount"
+          placeholder="Maximum Discount"
+          name="Max_Discount"
+        >
+      </div>
+
+      <div class="fd-submit-container">
+        <button type="submit" class="fd-submit">
+          Submit
+        </button>
+      </div>
+    </form>
+
   </div>
-  </form>
 </div>
-</div>
+
 {% endblock %}
 
 {% block navBar %}
-<a class="btn btn-outline-success my-2 my-sm-0 text-light bg-dark" href="/admin/{{admin_id}}">Go Back</a>
-
+<a
+  class="fd-nav-link"
+  href="/admin/{{admin_id}}"
+>
+  Go Back
+</a>
 {% endblock %}
-
-
-
-
-
+```

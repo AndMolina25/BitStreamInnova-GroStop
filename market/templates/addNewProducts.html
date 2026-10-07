@@ -1,47 +1,318 @@
+```html id="q8r4zn"
 {% extends 'base.html' %}
+
 {% block title %}
   Seller Panel
 {% endblock %}
 
 {% block content %}
-<div class ="d-flex justify-content-center align-items-center min-vh-100" >
-<div style="max-width: 30%;">
-<form method ="POST" action="">
-  <h1 class="text-center">
-    Enter Product Details
-  </h1>
-    
-    <div class="form-group" style="padding-top: 10px;">
-      <input class="form-control" id="exampleInputEmail1" placeholder="Product Name"
-      name = "Name">
+
+<style>
+  .fd-product-page {
+    min-height: calc(100vh - 65px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 16px;
+  }
+
+  .fd-product-card {
+    width: 100%;
+    max-width: 560px;
+    padding: 32px;
+
+    background-color: var(--fd-surface);
+    border: 1px solid var(--fd-line);
+    border-radius: 8px;
+  }
+
+  .fd-product-header {
+    margin-bottom: 28px;
+    text-align: center;
+  }
+
+  .fd-product-title {
+    margin: 0;
+    color: var(--fd-ink);
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .fd-product-subtitle {
+    margin: 8px 0 0;
+    color: var(--fd-muted);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .fd-form-group {
+    margin-bottom: 18px;
+  }
+
+  .fd-label {
+    display: block;
+    margin-bottom: 7px;
+
+    color: var(--fd-ink);
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .fd-input {
+    width: 100%;
+    min-height: 42px;
+    padding: 10px 12px;
+    box-sizing: border-box;
+
+    background-color: var(--fd-surface);
+    color: var(--fd-ink);
+
+    border: 1px solid var(--fd-line);
+    border-radius: 5px;
+
+    font-family: inherit;
+    font-size: 15px;
+    outline: none;
+
+    transition: border-color 0.15s ease;
+  }
+
+  .fd-input:hover {
+    border-color: var(--fd-muted);
+  }
+
+  .fd-input:focus {
+    border-color: var(--fd-accent);
+  }
+
+  .fd-input::placeholder {
+    color: var(--fd-muted);
+  }
+
+  .fd-submit-container {
+    margin-top: 26px;
+  }
+
+  .fd-submit {
+    width: 100%;
+    min-height: 42px;
+    padding: 10px 16px;
+
+    background-color: var(--fd-accent);
+    color: #ffffff;
+
+    border: 1px solid var(--fd-accent);
+    border-radius: 5px;
+
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+      background-color 0.15s ease,
+      border-color 0.15s ease;
+  }
+
+  .fd-submit:hover {
+    background-color: var(--fd-accent-hover);
+    border-color: var(--fd-accent-hover);
+  }
+
+  .fd-submit:focus {
+    outline: 2px solid var(--fd-accent);
+    outline-offset: 2px;
+  }
+
+  .fd-back-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 14px;
+  }
+
+  .fd-back-link {
+    display: inline-block;
+    padding: 9px 14px;
+
+    color: var(--fd-muted);
+    background-color: var(--fd-surface);
+
+    border: 1px solid var(--fd-line);
+    border-radius: 5px;
+
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+
+    transition:
+      color 0.15s ease,
+      border-color 0.15s ease,
+      background-color 0.15s ease;
+  }
+
+  .fd-back-link:hover {
+    color: var(--fd-accent);
+    background-color: var(--fd-page);
+    border-color: var(--fd-accent);
+    text-decoration: none;
+  }
+
+  @media (max-width: 576px) {
+
+    .fd-product-page {
+      min-height: auto;
+      padding: 24px 16px;
+    }
+
+    .fd-product-card {
+      padding: 24px 20px;
+    }
+
+    .fd-product-title {
+      font-size: 22px;
+    }
+  }
+</style>
+
+<div class="fd-product-page">
+
+  <div class="fd-product-card">
+
+    <div class="fd-product-header">
+      <h1 class="fd-product-title">
+        Enter Product Details
+      </h1>
+
+      <p class="fd-product-subtitle">
+        Add a new product to the store.
+      </p>
     </div>
-    <div class="form-group" >
-      <input class="form-control" id="exampleInputPassword1" placeholder="Brand" name="Brand">
-    </div>
-    <div class="form-group" >
-        <input class="form-control" id="exampleInputPassword1" placeholder="Price" name="Price">
-      </div>
-    <div class="form-group" >
-        <input class="form-control" id="exampleInputPassword1" placeholder="Measurement" name="Measurement">
+
+    <form method="POST" action="">
+
+      <div class="fd-form-group">
+
+        <label class="fd-label" for="productName">
+          Product Name
+        </label>
+
+        <input
+          type="text"
+          class="fd-input"
+          id="productName"
+          placeholder="Product Name"
+          name="Name"
+        >
+
       </div>
 
-      <div class="form-group" >
-        <input class="form-control" id="exampleInputPassword1" placeholder="Measurement Units" name="Unit">
+      <div class="fd-form-group">
+
+        <label class="fd-label" for="productBrand">
+          Brand
+        </label>
+
+        <input
+          type="text"
+          class="fd-input"
+          id="productBrand"
+          placeholder="Brand"
+          name="Brand"
+        >
+
       </div>
 
-      <div class="form-group" >
-        <input class="form-control" id="exampleInputPassword1" placeholder="Category ID" name="Category_ID">
+      <div class="fd-form-group">
+
+        <label class="fd-label" for="productPrice">
+          Price
+        </label>
+
+        <input
+          type="text"
+          class="fd-input"
+          id="productPrice"
+          placeholder="Price"
+          name="Price"
+        >
+
       </div>
-      
-  <div class="text-center">
-    <button type="submit" class="btn btn-primary">Submit</button>
+
+      <div class="fd-form-group">
+
+        <label class="fd-label" for="productMeasurement">
+          Measurement
+        </label>
+
+        <input
+          type="text"
+          class="fd-input"
+          id="productMeasurement"
+          placeholder="Measurement"
+          name="Measurement"
+        >
+
+      </div>
+
+      <div class="fd-form-group">
+
+        <label class="fd-label" for="productUnit">
+          Measurement Units
+        </label>
+
+        <input
+          type="text"
+          class="fd-input"
+          id="productUnit"
+          placeholder="Measurement Units"
+          name="Unit"
+        >
+
+      </div>
+
+      <div class="fd-form-group">
+
+        <label class="fd-label" for="categoryId">
+          Category ID
+        </label>
+
+        <input
+          type="text"
+          class="fd-input"
+          id="categoryId"
+          placeholder="Category ID"
+          name="Category_ID"
+        >
+
+      </div>
+
+      <div class="fd-submit-container">
+
+        <button type="submit" class="fd-submit">
+          Submit
+        </button>
+
+      </div>
+
+    </form>
+
   </div>
-  </form>
+
 </div>
-</div>
+
 {% endblock %}
+
 
 {% block navBar %}
-<a class="btn btn-outline-success my-2 my-sm-0 text-light bg-dark" href="/admin/{{admin_id}}">Go Back</a>
+
+<a
+  class="fd-back-link"
+  href="/admin/{{admin_id}}"
+>
+  Go Back
+</a>
 
 {% endblock %}
+```

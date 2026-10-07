@@ -1,32 +1,161 @@
+```html id="q7m2kx"
 {% extends 'base.html' %}
+
 {% block title %}
   Customer Login
 {% endblock %}
 
 {% block content %}
-<div class ="d-flex justify-content-center align-items-center min-vh-100" >
-<div style="max-width: 30%;">
-<form method ="POST" action="">
-  <h1 class="text-center">
-    Seller Enter your Authentication Details
-  </h1>
-    
-    <div class="form-group" style="padding-top: 10px;">
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email"
-      name = "Email">
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-    </div>
-    <div class="form-group" >
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="Password">
-      <small id="passwordHelpBlock" class="form-text text-muted">
-        Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-      </small>
-    </div>
-  <div class="text-center">
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </div>
-  </form>
-</div>
-</div>
+  <style>
+    .fd-login-page {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 16px;
+      box-sizing: border-box;
+    }
 
+    .fd-login-card {
+      width: 100%;
+      max-width: 460px;
+      padding: 36px;
+      box-sizing: border-box;
+      background: var(--fd-surface);
+      border: 1px solid var(--fd-line);
+      border-radius: 8px;
+    }
+
+    .fd-login-title {
+      margin: 0 0 28px;
+      color: var(--fd-ink);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 1.4;
+      text-align: center;
+    }
+
+    .fd-login-field {
+      margin-bottom: 20px;
+    }
+
+    .fd-login-input {
+      display: block;
+      width: 100%;
+      min-height: 44px;
+      padding: 10px 12px;
+      box-sizing: border-box;
+      background: var(--fd-surface);
+      color: var(--fd-ink);
+      border: 1px solid var(--fd-line);
+      border-radius: 5px;
+      outline: none;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 14px;
+      transition: border-color 0.15s ease;
+    }
+
+    .fd-login-input::placeholder {
+      color: var(--fd-muted);
+    }
+
+    .fd-login-input:focus {
+      border-color: var(--fd-accent);
+    }
+
+    .fd-login-help {
+      display: block;
+      margin-top: 7px;
+      color: var(--fd-muted);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .fd-login-submit-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-top: 8px;
+    }
+
+    .fd-login-submit {
+      min-width: 130px;
+      min-height: 44px;
+      padding: 10px 20px;
+    }
+
+    @media (max-width: 576px) {
+      .fd-login-page {
+        padding: 24px 12px;
+      }
+
+      .fd-login-card {
+        padding: 24px 20px;
+      }
+
+      .fd-login-title {
+        font-size: 20px;
+      }
+    }
+  </style>
+
+  <div class="fd-login-page">
+    <div class="fd-login-card">
+
+      <form method="POST" action="">
+
+        <h1 class="fd-login-title">
+          Seller Enter your Authentication Details
+        </h1>
+
+        <div class="fd-login-field">
+          <input
+            type="email"
+            class="fd-login-input"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="Email"
+            name="Email"
+          >
+
+          <small
+            id="emailHelp"
+            class="fd-login-help"
+          >
+            We'll never share your email with anyone else.
+          </small>
+        </div>
+
+        <div class="fd-login-field">
+          <input
+            type="password"
+            class="fd-login-input"
+            id="exampleInputPassword1"
+            placeholder="Password"
+            name="Password"
+          >
+
+          <small
+            id="passwordHelpBlock"
+            class="fd-login-help"
+          >
+            Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+          </small>
+        </div>
+
+        <div class="fd-login-submit-wrapper">
+          <button
+            type="submit"
+            class="fd-button fd-login-submit"
+          >
+            Submit
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
 {% endblock %}
+```

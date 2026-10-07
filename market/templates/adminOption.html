@@ -1,48 +1,150 @@
-{% extends 'base.html' %} {% block title %} Admin Roles {% endblock %} {% block
-content %}
-<div class="d-flex justify-content-center align-items-center min-vh-100">
-  <div style="max-width: 30%">
+```jinja2
+{% extends 'base.html' %}
+
+{% block title %}
+  Admin Roles
+{% endblock %}
+
+{% block content %}
+
+<style>
+  .fd-admin-page {
+    min-height: calc(100vh - 65px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 16px;
+  }
+
+  .fd-admin-card {
+    width: 100%;
+    max-width: 560px;
+    padding: 32px;
+    background-color: var(--fd-surface);
+    border: 1px solid var(--fd-line);
+    border-radius: 8px;
+  }
+
+  .fd-admin-title {
+    margin: 0 0 28px;
+    color: var(--fd-ink);
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .fd-admin-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .fd-admin-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 52px;
+    padding: 12px 16px;
+    color: var(--fd-ink);
+    background-color: var(--fd-surface);
+    border: 1px solid var(--fd-line);
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    transition:
+      border-color 0.15s ease,
+      background-color 0.15s ease,
+      color 0.15s ease;
+  }
+
+  .fd-admin-option:hover {
+    color: var(--fd-accent);
+    background-color: var(--fd-page);
+    border-color: var(--fd-accent);
+    text-decoration: none;
+  }
+
+  .fd-admin-option::after {
+    content: "→";
+    color: var(--fd-muted);
+    font-size: 18px;
+    transition: color 0.15s ease;
+  }
+
+  .fd-admin-option:hover::after {
+    color: var(--fd-accent);
+  }
+
+  @media (max-width: 576px) {
+    .fd-admin-page {
+      padding: 24px 16px;
+    }
+
+    .fd-admin-card {
+      padding: 24px 20px;
+    }
+
+    .fd-admin-title {
+      font-size: 24px;
+    }
+  }
+</style>
+
+<div class="fd-admin-page">
+  <div class="fd-admin-card">
+
     <form method="POST" action="">
-      <h1 class="text-center">Please Choose your role</h1>
-      <div style="margin-left: 70px">
-        <div class="form-group" style="padding-top: 10px">
-          <a class="btn btn-lg btn-outline-info" href="/adminOrder/{{admin_id}}"
-            >View Orders</a
-          >
-        </div>
 
-        <div class="form-group" style="padding-top: 10px">
-          <a
-            class="btn btn-lg btn-outline-info"
-            href="/adminDelivery_boy/{{admin_id}}"
-            >Add Delivery Boy</a
-          >
-        </div>
+      <h1 class="fd-admin-title">
+        Please Choose your role
+      </h1>
 
-        <div class="form-group" style="padding-top: 10px">
-          <a class="btn btn-lg btn-outline-info" href="/adminOffer/{{admin_id}}"
-            >Add New Offers</a
-          >
-        </div>
+      <div class="fd-admin-options">
 
-        <div class="form-group" style="padding-top: 10px">
-          <a
-            class="btn btn-lg btn-outline-info"
-            href="/adminProduct/{{admin_id}}"
-            >Add New Product</a
-          >
-        </div>
+        <a
+          class="fd-admin-option"
+          href="/adminOrder/{{admin_id}}"
+        >
+          View Orders
+        </a>
 
-        <div class="form-group" style="padding-top: 10px">
-          <a
-            class="btn btn-lg btn-outline-info"
-            href="/adminSeller/{{admin_id}}"
-            >Add Seller</a
-          >
-        </div>
+        <a
+          class="fd-admin-option"
+          href="/adminDelivery_boy/{{admin_id}}"
+        >
+          Add Delivery Boy
+        </a>
+
+        <a
+          class="fd-admin-option"
+          href="/adminOffer/{{admin_id}}"
+        >
+          Add New Offers
+        </a>
+
+        <a
+          class="fd-admin-option"
+          href="/adminProduct/{{admin_id}}"
+        >
+          Add New Product
+        </a>
+
+        <a
+          class="fd-admin-option"
+          href="/adminSeller/{{admin_id}}"
+        >
+          Add Seller
+        </a>
+
       </div>
+
     </form>
+
   </div>
 </div>
 
 {% endblock %}
+```
