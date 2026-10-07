@@ -1,0 +1,246 @@
+# Bitácora de Sprints - GroStop
+
+**Célula / Equipo:** BitStream Innova  
+**Proyecto:** GroStop  
+**Metodología:** Desarrollo organizado mediante Sprints
+
+## Integrantes y roles
+
+- **Eidy Elizabeth:** Líder de equipo / Coordinación e integración
+- **Andrés Molina Espinoza:** Tester (QA) y Control de Plazos
+- **Dahir Miguel Martinez Ortiz:** Analista de Requisitos y Modelado SRS / apoyo UI-UX
+- **Yahir Obed Martinez Ortiz:** Desarrollador Backend / Core
+
+---
+
+# Sprint 1 - Preparación, análisis y configuración
+**Periodo:** Días 0 al 5
+
+## Objetivo del Sprint
+
+Preparar el entorno de trabajo, analizar la estructura inicial de GroStop,
+configurar las dependencias y base de datos, y verificar la ejecución local
+del sistema.
+
+### Día 0 - Organización inicial
+
+**Eidy Elizabeth - Líder**
+- Organizó al equipo y revisó el alcance general de GroStop.
+- Distribuyó responsabilidades de acuerdo con los roles.
+- Estableció las prioridades iniciales del proyecto.
+
+**Andrés Molina Espinoza - QA**
+- Revisó el plan inicial de trabajo.
+- Preparó el entorno para realizar pruebas posteriores.
+- Apoyó en el seguimiento de las actividades asignadas.
+
+**Dahir Miguel Martinez Ortiz - Requisitos**
+- Recibió el repositorio y comenzó la inspección del proyecto.
+
+**Yahir Obed Martinez Ortiz - Backend**
+- Instaló las herramientas necesarias.
+- Preparó Python, PowerShell y XAMPP.
+- Clonó el repositorio del proyecto.
+
+---
+
+### Día 1 - Análisis del proyecto
+
+**Eidy Elizabeth**
+- Dio seguimiento a la configuración inicial.
+- Verificó que cada integrante conociera sus responsabilidades.
+
+**Andrés Molina Espinoza**
+- Clonó el proyecto para iniciar las pruebas.
+- Revisó la estructura necesaria para ejecutar la aplicación.
+
+**Dahir Miguel Martinez Ortiz**
+- Analizó Flask, Jinja2 y Bootstrap.
+- Revisó `Dump.sql`, `database.yaml` y la base `online_store`.
+
+**Yahir Obed Martinez Ortiz**
+- Analizó la arquitectura Flask, MySQL y HTML/Bootstrap.
+- Identificó `run.py`, rutas y modelos.
+
+---
+
+### Día 2 - Dependencias y entorno
+
+**Eidy Elizabeth**
+- Revisó los avances del equipo.
+- Registró dificultades encontradas durante la configuración.
+
+**Andrés Molina Espinoza**
+- Detectó problemas relacionados con la configuración local.
+- Apoyó en la comprobación del entorno de pruebas.
+
+**Dahir Miguel Martinez Ortiz**
+- Continuó con el análisis de roles, rutas y estructura del sistema.
+
+**Yahir Obed Martinez Ortiz**
+- Revisó `requirements.txt`.
+- Configuró un entorno virtual `venv`.
+
+---
+
+### Día 3 - Compatibilidad y revisión
+
+**Eidy Elizabeth**
+- Coordinó la resolución de problemas técnicos encontrados.
+
+**Andrés Molina Espinoza**
+- Realizó pruebas iniciales de ejecución.
+- Registró errores encontrados para su corrección.
+
+**Dahir Miguel Martinez Ortiz**
+- Rastreó endpoints y plantillas HTML.
+- Analizó los perfiles Administrador, Vendedor y Cliente.
+
+**Yahir Obed Martinez Ortiz**
+- Actualizó librerías incompatibles u obsoletas.
+- Verificó la instalación de dependencias.
+
+---
+
+### Día 4 - Base de datos
+
+**Eidy Elizabeth**
+- Dio seguimiento a la configuración de la base de datos.
+
+**Andrés Molina Espinoza**
+- Verificó la conexión del sistema con MySQL.
+- Registró problemas encontrados durante las pruebas.
+
+**Dahir Miguel Martinez Ortiz**
+- Analizó las relaciones y restricciones de la base de datos.
+
+**Yahir Obed Martinez Ortiz**
+- Inició Apache y MySQL mediante XAMPP.
+- Creó la base `online_store`.
+- Importó las tablas correspondientes.
+
+---
+
+### Día 5 - Ejecución y pruebas
+
+**Eidy Elizabeth**
+- Revisó el cumplimiento de las actividades del primer Sprint.
+- Coordinó la integración de los avances.
+
+**Andrés Molina Espinoza**
+- Probó rutas y formularios.
+- Detectó problemas de conexión y ejecución.
+- Verificó el funcionamiento de registro y autenticación.
+
+**Dahir Miguel Martinez Ortiz**
+- Terminó el análisis inicial de rutas, actores y funcionalidades.
+
+**Yahir Obed Martinez Ortiz**
+- Configuró `database.yaml`.
+- Ejecutó `python run.py`.
+- Validó la aplicación localmente.
+
+## Resultado del Sprint 1
+
+Se consiguió preparar el entorno de desarrollo, analizar la arquitectura
+del proyecto, configurar la base de datos y ejecutar GroStop localmente.
+
+---
+
+# Sprint 2 - Requisitos, UI/UX y pruebas
+**Periodo:** Días 6 al 10
+
+## Objetivo
+
+Documentar los requisitos del sistema, analizar la experiencia de usuario
+y continuar las pruebas funcionales.
+
+### Actividades principales
+
+**Eidy Elizabeth**
+- Coordinó el seguimiento de requisitos, UI/UX, backend y testing.
+- Revisó avances y pendientes.
+
+**Andrés Molina Espinoza**
+- Ejecutó pruebas sobre rutas y formularios.
+- Registró errores y verificó las correcciones.
+- Dio seguimiento a los plazos del Sprint.
+
+**Dahir Miguel Martinez Ortiz**
+- Elaboró la matriz de actores.
+- Documentó requisitos funcionales y no funcionales.
+- Realizó la auditoría heurística de `market/templates/` y `market/static/`.
+
+**Yahir Obed Martinez Ortiz**
+- Apoyó técnicamente en la integración y funcionamiento del backend.
+
+## Evidencias
+
+- `DOCUMENTACION_SRS.md`
+- `docs/EVALUACION_UI_UX.md`
+- `database.yaml`
+- `requirements.txt`
+
+---
+
+# Sprint 3 - Integración y cierre
+**Periodo:** Días 11 al 14
+
+## Objetivo
+
+Integrar los entregables, revisar las mejoras propuestas y preparar
+la documentación final del proyecto.
+
+### Actividades principales
+
+**Eidy Elizabeth**
+- Coordinó la integración final.
+- Revisó evidencias y documentación.
+- Dio seguimiento a las actividades pendientes.
+
+**Andrés Molina Espinoza**
+- Realizó pruebas finales.
+- Verificó rutas, formularios y estabilidad.
+- Revisó el cumplimiento de los plazos.
+
+**Dahir Miguel Martinez Ortiz**
+- Relacionó las pantallas con los casos de uso.
+- Propuso mejoras visuales para el catálogo.
+- Preparó propuestas de indicadores de stock y alertas visuales.
+
+**Yahir Obed Martinez Ortiz**
+- Apoyó en la preparación técnica de las funcionalidades del backend.
+
+---
+
+# Incidencia y reestructuración del equipo
+
+Durante el desarrollo del proyecto se presentó una situación con una
+integrante del equipo que no realizó las actividades correspondientes
+al rol que tenía asignado.
+
+Como parte del seguimiento, la líder del equipo verificó el cumplimiento
+de las tareas y solicitó los avances correspondientes. Al no contar con
+las evidencias y actividades necesarias para continuar con la distribución
+original del trabajo, el equipo tomó la decisión de separar a la integrante
+del proyecto.
+
+Esta situación provocó una reestructuración de responsabilidades. Las
+actividades pendientes fueron redistribuidas entre los integrantes activos
+para evitar retrasos en los Sprints y mantener la continuidad del proyecto.
+
+Dahir Miguel Martinez Ortiz asumió adicionalmente actividades relacionadas
+con UI/UX, mientras que Eidy Elizabeth dio seguimiento a la reorganización
+y a la integración de los nuevos entregables.
+
+---
+
+# Conclusión
+
+La organización mediante Sprints permitió registrar de manera clara el
+avance del proyecto GroStop, las responsabilidades de cada integrante,
+los problemas encontrados y las soluciones implementadas.
+
+La participación coordinada de liderazgo, requisitos, backend y testing
+permitió mantener el proyecto organizado incluso después de la
+reestructuración del equipo.
