@@ -217,7 +217,9 @@ def userEnter(user_id):
     if request.method == 'POST':
         execute_write(
             "INSERT INTO cart(Cart_ID,Total_Value,Total_Count,Offer_ID,Final_Amount) "
-            "VALUES(%s, %s, %s, %s, %s)",
+            "VALUES(%s, %s, %s, %s, %s) "
+            "ON DUPLICATE KEY UPDATE Total_Value = VALUES(Total_Value), "
+            "Total_Count = VALUES(Total_Count), Final_Amount = VALUES(Final_Amount)",
             (cart_id, total_val, total_count, DEFAULT_OFFER_ID, total_val),
         )
         return redirect(url_for('placeOrder', user_id=user_id))
